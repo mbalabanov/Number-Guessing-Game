@@ -62,6 +62,7 @@ def results():
     user = db.query(User).filter_by(email=email).first()
 
     if guess == user.secret:
+        smessage = 'Congratulations!'
         message = "Your guess is right! {0} is the secret number.".format(str(guess))
         new_secret = random.randint(1, 50)
         user.secret = new_secret
@@ -70,11 +71,13 @@ def results():
 
     elif guess > user.secret:
         message = "Too high, the secret number is smaller."
+        smessage = "Lower!"
 
     elif guess < user.secret:
         message = "Too low, the secret number is bigger."
+        smessage = "Higher!"
 
-    return render_template("results.html", message=message)
+    return render_template("results.html", message=message, successmessage=smessage)
 
 if __name__ == '__main__':
     app.run(debug=True)
