@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post" action="/results">
+  <div class="form-group">
+    <label for="guess"><strong>Your guess</strong></label>
+    <input type="text" class="form-control" id="guess" name="guess" placeholder="Enter your guess here">
+  </div>
+  <button type="submit" class="btn btn-primary">Guess</button>
+</form>
+{% endblock content %}
